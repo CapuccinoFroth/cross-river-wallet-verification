@@ -55,6 +55,8 @@ import {
 type Phase = "verify" | "configure" | "review" | "processing" | "success" | "blocked"
 
 const STEP_LABELS = ["Verify", "Fund", "Compliance review", "Settle"]
+// The compliance review step is owned by Cross River Bank (CRB).
+const STEP_OWNERS = [undefined, undefined, "Cross River Bank", undefined]
 
 function phaseToStep(phase: Phase): number {
   switch (phase) {
@@ -185,7 +187,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
       : []),
     { label: controls.screeningDelay ? "Enhanced source-of-funds review" : "Source-of-funds risk scoring", owner: "crossriver" },
     { label: "Cross River compliance policy decision", owner: "crossriver" },
-    { label: "Cross River credited to your balance", owner: "crossriver" },
+    { label: "Fintech credited to your balance", owner: "crossriver" },
   ]
 
   const willReject = controls.crossriverDecision === "reject"
@@ -241,7 +243,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
 
   return (
     <div className="flex flex-col gap-5">
-      <StepIndicator current={phaseToStep(phase)} labels={STEP_LABELS} />
+      <StepIndicator current={phaseToStep(phase)} labels={STEP_LABELS} owners={STEP_OWNERS} />
 
       {/* STEP 1 — VERIFY / CONNECT */}
       {phase === "verify" ? (
@@ -326,7 +328,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
         <StepCard
           step={2}
           title="Choose funding source & amount"
-          description="Fund your Cross River balance from any supported wallet asset. Rates and fees shown are illustrative."
+          description="Fund your Fintech balance from any supported wallet asset. Rates and fees shown are illustrative."
         >
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
@@ -401,7 +403,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
               <InfoRow label="You pay" value={formatToken(tokenAmount, asset.symbol)} mono />
               <InfoRow label="Network cost & spread" value={formatUsd(cost)} mono />
               <div className="my-2 h-px bg-border" />
-              <InfoRow label="Cross River credited" value={formatUsd(creditEstimate)} mono strong />
+              <InfoRow label="Fintech credited" value={formatUsd(creditEstimate)} mono strong />
             </div>
 
             {insufficient ? (
@@ -442,7 +444,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
               <InfoRow label="You pay" value={formatToken(tokenAmount, asset.symbol)} mono />
               <InfoRow label="Estimated cost" value={formatUsd(cost)} mono />
               <div className="my-2 h-px bg-border" />
-              <InfoRow label="Cross River credited" value={formatUsd(creditEstimate)} mono strong />
+              <InfoRow label="Fintech credited" value={formatUsd(creditEstimate)} mono strong />
             </div>
 
             {controls.travelRulePayin ? (

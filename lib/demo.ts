@@ -82,7 +82,6 @@ export interface FundingAsset {
 }
 
 export const FUNDING_ASSETS: FundingAsset[] = [
-  { id: "crossriver-base", symbol: "Cross River", balance: 1200, network: "Base", chainId: 8453, rate: 1 },
   { id: "usdc-base", symbol: "USDC", balance: 420, network: "Base", chainId: 8453, rate: 0.997 },
   { id: "eth-eth", symbol: "ETH", balance: 0.18, network: "Ethereum", chainId: 1, rate: 3350 },
   { id: "usdt-arb", symbol: "USDT", balance: 210, network: "Arbitrum", chainId: 42161, rate: 0.996 },

@@ -105,12 +105,22 @@ export function DataRelayed({ rows }: { rows: { label: string; value: string }[]
   )
 }
 
-export function StepIndicator({ current, labels }: { current: number; labels: string[] }) {
+export function StepIndicator({
+  current,
+  labels,
+  owners,
+}: {
+  current: number
+  labels: string[]
+  /** Optional per-step responsible party, rendered as a caption under the label. */
+  owners?: (string | undefined)[]
+}) {
   return (
     <ol className="flex items-center gap-2">
       {labels.map((label, i) => {
         const done = i < current
         const active = i === current
+        const owner = owners?.[i]
         return (
           <li key={label} className="flex flex-1 items-center gap-2">
             <div className="flex items-center gap-2">
@@ -124,13 +134,25 @@ export function StepIndicator({ current, labels }: { current: number; labels: st
               >
                 {done ? <Check className="size-3.5" /> : i + 1}
               </span>
-              <span
-                className={cn(
-                  "hidden text-xs font-medium sm:inline",
-                  active || done ? "text-foreground" : "text-muted-foreground",
-                )}
-              >
-                {label}
+              <span className="hidden flex-col leading-tight sm:flex">
+                <span
+                  className={cn(
+                    "text-xs font-medium",
+                    active || done ? "text-foreground" : "text-muted-foreground",
+                  )}
+                >
+                  {label}
+                </span>
+                {owner ? (
+                  <span
+                    className={cn(
+                      "text-[10px] font-medium tracking-wide",
+                      active || done ? "text-primary" : "text-muted-foreground/70",
+                    )}
+                  >
+                    {owner}
+                  </span>
+                ) : null}
               </span>
             </div>
             {i < labels.length - 1 ? (
