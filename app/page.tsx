@@ -12,7 +12,6 @@ import { PayoutFlow } from "@/components/payout-flow"
 import { CompliancePanel } from "@/components/compliance-panel"
 import { ActivityPanel } from "@/components/activity-panel"
 import { DemoControlsPanel } from "@/components/demo-controls-panel"
-import { SetupCard } from "@/components/setup-card"
 import { isReownConfigured } from "@/context/appkit-provider"
 import { cn } from "@/lib/utils"
 
@@ -34,8 +33,6 @@ export default function Page() {
 
       <main className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-8 md:px-6 md:py-10">
         <Hero />
-
-        {!isReownConfigured ? <SetupCard /> : null}
 
         <div
           className={cn(

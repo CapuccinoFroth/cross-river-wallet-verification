@@ -59,7 +59,7 @@ export function Hero() {
       {/* Cross-cutting architecture banner */}
       <div className="rounded-2xl border border-border bg-surface-blue/60 p-4 md:p-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-stretch">
-          <ArchNode icon={Smartphone} title="Cross River App" tone="app" />
+          <ArchNode icon={Smartphone} title="Fintech App" tone="app" />
           <Arrow />
           <div className="flex-1 rounded-xl bg-primary/5 p-3 ring-1 ring-primary/20">
             <div className="mb-3 flex items-center gap-2">
