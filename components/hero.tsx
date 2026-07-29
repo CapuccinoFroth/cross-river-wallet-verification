@@ -8,6 +8,10 @@ import {
   UserCheck,
   ScanSearch,
   FileText,
+  Landmark,
+  Building2,
+  User,
+  ChevronRight,
 } from "lucide-react"
 
 const capabilities = [
@@ -92,7 +96,65 @@ export function Hero() {
           Cross River retains final permissioning, enforcement, and all compliance determinations.
         </p>
       </div>
+
+      {/* Viewer-perspective breadcrumb — clarifies who sees the flows below */}
+      <div className="flex flex-col gap-3 rounded-2xl border border-dashed border-primary/25 bg-card/60 p-4 sm:flex-row sm:items-center sm:justify-between md:p-5">
+        <nav aria-label="Distribution hierarchy" className="min-w-0">
+          <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-2">
+            <BreadcrumbStep icon={Landmark} label="Cross River Bank" sub="Client / bank" />
+            <BreadcrumbSep />
+            <BreadcrumbStep icon={Building2} label="Fintech partner" sub="CRB's client" />
+            <BreadcrumbSep />
+            <BreadcrumbStep icon={User} label="End user" sub="You are here" active />
+          </ol>
+        </nav>
+        <p className="max-w-md text-pretty text-xs leading-relaxed text-muted-foreground">
+          The <span className="font-medium text-foreground">Universal Top-Up</span> and{" "}
+          <span className="font-medium text-foreground">Payout to Wallet</span>{" "}
+          flows below are the end user&apos;s view — the WalletConnect Headless SDK is embedded in
+          the fintech&apos;s app,
+          so neither Cross River nor the fintech builds the wallet-connectivity UI.
+        </p>
+      </div>
     </section>
+  )
+}
+
+function BreadcrumbStep({
+  icon: Icon,
+  label,
+  sub,
+  active = false,
+}: {
+  icon: typeof Smartphone
+  label: string
+  sub: string
+  active?: boolean
+}) {
+  return (
+    <li
+      className={`flex items-center gap-2 rounded-lg px-2.5 py-1.5 ring-1 ${
+        active
+          ? "bg-primary/10 ring-primary/30"
+          : "bg-muted/60 ring-foreground/5"
+      }`}
+    >
+      <Icon className={`size-4 shrink-0 ${active ? "text-primary" : "text-muted-foreground"}`} />
+      <span className="flex flex-col leading-tight">
+        <span className={`text-sm font-medium ${active ? "text-primary" : "text-foreground"}`}>
+          {label}
+        </span>
+        <span className="text-[11px] text-muted-foreground">{sub}</span>
+      </span>
+    </li>
+  )
+}
+
+function BreadcrumbSep() {
+  return (
+    <li aria-hidden="true">
+      <ChevronRight className="size-4 text-muted-foreground/60" />
+    </li>
   )
 }
 
