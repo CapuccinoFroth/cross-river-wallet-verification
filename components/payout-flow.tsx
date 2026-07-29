@@ -90,7 +90,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
   const { isConnected } = useAppKitAccount()
   const verification = useWalletVerification()
   const controls = useDemoControls()
-  const { balance, debit, logOnly } = useAccount()
+  const { balance, debit, logOnly, setComplianceActive } = useAccount()
 
   const [phase, setPhase] = useState<Phase>("verify")
   const [amount, setAmount] = useState<string>("500")
@@ -145,6 +145,13 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
       setAttestRequesting(false)
     }
   }, [verification.verified])
+
+  // Hand responsibility to Cross River Bank while the flow sits in the
+  // "Compliance review" step (breadcrumb reflects this).
+  useEffect(() => {
+    setComplianceActive(phaseToStep(phase) === 2)
+    return () => setComplianceActive(false)
+  }, [phase, setComplianceActive])
 
   const handleAttest = useCallback(async () => {
     attestRequestedRef.current = true

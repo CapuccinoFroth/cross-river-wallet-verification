@@ -23,6 +23,9 @@ interface AccountContextValue {
   debit: (amount: number, item: Omit<ActivityItem, "amount" | "at" | "kind"> & { kind: "payout" }) => void
   logOnly: (item: Omit<ActivityItem, "at">) => void
   reset: () => void
+  /** True while a flow is in the "Compliance review" step — hands responsibility to CRB. */
+  complianceActive: boolean
+  setComplianceActive: (active: boolean) => void
 }
 
 const AccountContext = createContext<AccountContextValue | null>(null)
@@ -30,6 +33,7 @@ const AccountContext = createContext<AccountContextValue | null>(null)
 export function AccountProvider({ children }: { children: React.ReactNode }) {
   const [balance, setBalance] = useState(INITIAL_CROSSRIVERUSD_BALANCE)
   const [history, setHistory] = useState<ActivityItem[]>([])
+  const [complianceActive, setComplianceActive] = useState(false)
 
   const credit: AccountContextValue["credit"] = useCallback((amount, item) => {
     setBalance((b) => b + amount)
@@ -48,11 +52,12 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
   const reset = useCallback(() => {
     setBalance(INITIAL_CROSSRIVERUSD_BALANCE)
     setHistory([])
+    setComplianceActive(false)
   }, [])
 
   const value = useMemo(
-    () => ({ balance, history, credit, debit, logOnly, reset }),
-    [balance, history, credit, debit, logOnly, reset],
+    () => ({ balance, history, credit, debit, logOnly, reset, complianceActive, setComplianceActive }),
+    [balance, history, credit, debit, logOnly, reset, complianceActive],
   )
 
   return <AccountContext.Provider value={value}>{children}</AccountContext.Provider>

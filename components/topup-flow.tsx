@@ -83,7 +83,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
   const { isConnected } = useAppKitAccount()
   const verification = useWalletVerification()
   const controls = useDemoControls()
-  const { credit, logOnly } = useAccount()
+  const { credit, logOnly, setComplianceActive } = useAccount()
 
   const [phase, setPhase] = useState<Phase>("verify")
   const [asset, setAsset] = useState<FundingAsset>(FUNDING_ASSETS[0])
@@ -140,6 +140,13 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
       setAttestRequesting(false)
     }
   }, [verification.verified])
+
+  // Hand responsibility to Cross River Bank while the flow sits in the
+  // "Compliance review" step (breadcrumb reflects this).
+  useEffect(() => {
+    setComplianceActive(phaseToStep(phase) === 2)
+    return () => setComplianceActive(false)
+  }, [phase, setComplianceActive])
 
   const handleAttest = useCallback(async () => {
     attestRequestedRef.current = true
@@ -564,7 +571,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
         <StepCard
           step={<Check className="size-4" />}
           title="Top-up complete"
-          description="Cross River approved and credited your Cross River balance."
+          description="Cross River approved and credited your Fintech balance."
         >
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
@@ -575,7 +582,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
                 <div className="text-2xl font-semibold text-foreground">
                   {formatUsd(receipt.credit)}
                 </div>
-                <div className="text-sm text-muted-foreground">credited to Cross River</div>
+                <div className="text-sm text-muted-foreground">credited to Fintech</div>
               </div>
               <Badge className="ml-auto gap-1 bg-primary/10 text-primary">
                 <Check className="size-3" /> Settled
