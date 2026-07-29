@@ -54,9 +54,9 @@ import {
 
 type Phase = "verify" | "configure" | "review" | "processing" | "success" | "blocked"
 
-const STEP_LABELS = ["Verify", "Fund", "Compliance review", "Settle"]
+const STEP_LABELS = ["Verify", "Fund", "Review", "Compliance review", "Settle"]
 // The compliance review step is owned by Cross River Bank (CRB).
-const STEP_OWNERS = [undefined, undefined, "Cross River Bank", undefined]
+const STEP_OWNERS = [undefined, undefined, undefined, "Cross River Bank", undefined]
 
 function phaseToStep(phase: Phase): number {
   switch (phase) {
@@ -64,18 +64,21 @@ function phaseToStep(phase: Phase): number {
       return 0
     case "configure":
       return 1
-    // Acknowledgement, active screening, and a compliance block all live
-    // inside the "Compliance review" step.
+    // The user reviews & acknowledges their own request here — still the
+    // fintech-side "Review" step, before anything is handed to Cross River.
     case "review":
+      return 2
+    // Active screening and a compliance block live inside the Cross River
+    // owned "Compliance review" step.
     case "processing":
     case "blocked":
-      return 2
+      return 3
     // Settlement only completes after Cross River approves, so success marks every
     // step — including "Settle" — as done.
     case "success":
-      return 4
+      return 5
     default:
-      return 2
+      return 3
   }
 }
 
@@ -144,7 +147,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
   // Hand responsibility to Cross River Bank while the flow sits in the
   // "Compliance review" step (breadcrumb reflects this).
   useEffect(() => {
-    setComplianceActive(phaseToStep(phase) === 2)
+    setComplianceActive(phaseToStep(phase) === 3)
     return () => setComplianceActive(false)
   }, [phase, setComplianceActive])
 

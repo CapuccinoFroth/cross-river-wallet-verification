@@ -51,9 +51,10 @@ export function Hero() {
           Move between on-chain assets and Cross River with compliance built into the flow.
         </h1>
         <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Connect and verify an external wallet, fund a Cross River balance from supported digital
-          assets, or withdraw to a verified beneficiary wallet. WalletConnect orchestrates wallet
-          interactions and compliance data handoffs while Cross River remains the final decision-maker.
+          The proposed WalletConnect architecture allows CRB to remain the central integration and
+          orchestration layer. FinTechs continue integrating with CRB APIs, while CRB integrates with
+          WalletConnect services underneath to deliver compliant, secure and elegant payment
+          experiences.
         </p>
       </div>
 
