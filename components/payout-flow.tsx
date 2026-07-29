@@ -75,7 +75,7 @@ function phaseToStep(phase: Phase): number {
     case "review_hold":
     case "blocked":
       return 2
-    // Settlement only completes after CrossRiver approves, so success marks every
+    // Settlement only completes after Cross River approves, so success marks every
     // step — including "Settle" — as done.
     case "success":
       return 4
@@ -184,7 +184,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
         : "WalletConnect relays connected beneficiary address",
       owner: "walletconnect",
     },
-    { label: "CrossRiver receives payout instruction", owner: "crossriver" },
+    { label: "Cross River receives payout instruction", owner: "crossriver" },
     { label: "Sanctions & destination-address screening", owner: "crossriver" },
     ...(controls.travelRulePayout
       ? [{ label: "Travel Rule originator/beneficiary data exchange", owner: "crossriver" as const }]
@@ -195,8 +195,8 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
         : "Beneficiary name match",
       owner: "crossriver",
     },
-    { label: "CrossRiver compliance policy decision", owner: "crossriver" },
-    { label: "CrossRiverUSD debited & sent on-chain", owner: "crossriver-wc" },
+    { label: "Cross River compliance policy decision", owner: "crossriver" },
+    { label: "Cross River debited & sent on-chain", owner: "crossriver-wc" },
   ]
 
   // Determine outcome + stop index.
@@ -269,7 +269,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
           title={controls.payoutVerification ? "Verify beneficiary wallet" : "Connect beneficiary wallet"}
           description={
             controls.payoutVerification
-              ? "Connect the external wallet that will receive the payout and sign a fresh SIWX proof. The beneficiary must prove ownership of the destination address before any funds leave CrossRiver."
+              ? "Connect the external wallet that will receive the payout and sign a fresh SIWX proof. The beneficiary must prove ownership of the destination address before any funds leave Cross River."
               : "Connect the external wallet that will receive the payout. Ownership verification is disabled for this demo, so no signature is required."
           }
         >
@@ -294,7 +294,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
           ) : controls.payoutVerification ? (
             <WalletVerifyCard
               verification={verification}
-              prompt="Sign the request with the destination wallet to prove you own this beneficiary address. A fresh signature is required for every payout — CrossRiver will only release funds to a freshly proven destination."
+              prompt="Sign the request with the destination wallet to prove you own this beneficiary address. A fresh signature is required for every payout — Cross River will only release funds to a freshly proven destination."
               onCopy={copyAddress}
               copied={copied}
               attestation={{
@@ -303,7 +303,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
                 onAttest: handleAttest,
               }}
               verifiedTitle="Beneficiary ownership verified"
-              evidenceLabel="Beneficiary ownership proof relayed to CrossRiver."
+              evidenceLabel="Beneficiary ownership proof relayed to Cross River."
             />
           ) : (
             <div className="flex items-center justify-between gap-3 rounded-xl border border-border bg-muted/40 px-4 py-3">
@@ -346,11 +346,11 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
         <StepCard
           step={2}
           title="Payout amount & network"
-          description="Withdraw CrossRiverUSD to your verified external wallet."
+          description="Withdraw Cross River to your verified external wallet."
         >
           <div className="flex flex-col gap-5">
             <div className="flex items-center justify-between rounded-xl border border-border bg-muted/40 px-4 py-3">
-              <span className="text-sm text-muted-foreground">Available CrossRiverUSD</span>
+              <span className="text-sm text-muted-foreground">Available Cross River</span>
               <span className="font-mono text-base font-semibold text-foreground">
                 {formatUsd(balance)}
               </span>
@@ -432,7 +432,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
 
             {insufficient ? (
               <p className="flex items-center gap-2 text-sm text-destructive">
-                <CircleAlert className="size-4" /> Amount exceeds your CrossRiverUSD balance.
+                <CircleAlert className="size-4" /> Amount exceeds your Cross River balance.
               </p>
             ) : null}
 
@@ -457,7 +457,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
         <StepCard
           step={3}
           title="Review & acknowledge"
-          description="Confirm the payout details before CrossRiver screens and settles the withdrawal."
+          description="Confirm the payout details before Cross River screens and settles the withdrawal."
         >
           <div className="flex flex-col gap-4">
             <div className="rounded-xl border border-border bg-card p-4">
@@ -474,7 +474,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
               <TravelRuleFields
                 value={travelRule}
                 onChange={setTravelRule}
-                description="This payout exceeds the Travel Rule threshold. CrossRiver requires the beneficiary's identity details to exchange with the receiving institution."
+                description="This payout exceeds the Travel Rule threshold. Cross River requires the beneficiary's identity details to exchange with the receiving institution."
               />
             ) : null}
 
@@ -501,7 +501,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
             />
 
             <ResponsibilityNote>
-              CrossRiver is solely responsible for Travel Rule compliance, sanctions screening, and the
+              Cross River is solely responsible for Travel Rule compliance, sanctions screening, and the
               final decision to release this payout. WalletConnect only relays verified beneficiary
               ownership proof and never controls the movement of funds.
             </ResponsibilityNote>
@@ -513,7 +513,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
                 className="mt-0.5"
               />
               <span className="text-sm leading-relaxed text-foreground">
-                I confirm this is a demo, the destination is correct, and CrossRiver controls the
+                I confirm this is a demo, the destination is correct, and Cross River controls the
                 compliance outcome.
               </span>
             </label>
@@ -543,8 +543,8 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
       {phase === "processing" ? (
         <StepCard
           step={4}
-          title="CrossRiver compliance screening"
-          description="WalletConnect relays the verified beneficiary proof; CrossRiver runs screening, Travel Rule, and the release decision."
+          title="Cross River compliance screening"
+          description="WalletConnect relays the verified beneficiary proof; Cross River runs screening, Travel Rule, and the release decision."
         >
           <div className="mb-3 flex justify-end">
             <Button
@@ -575,7 +575,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
               stopLabel={
                 outcome === "hold"
                   ? "Held for manual review — beneficiary mismatch"
-                  : "Blocked by CrossRiver compliance policy"
+                  : "Blocked by Cross River compliance policy"
               }
               onComplete={handleComplete}
               onStopped={handleStopped}
@@ -594,7 +594,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
         <StepCard
           step={<Check className="size-4" />}
           title="Payout sent"
-          description="CrossRiver released the payout to your verified external wallet."
+          description="Cross River released the payout to your verified external wallet."
         >
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
@@ -643,7 +643,7 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
         <StepCard
           step={<ShieldAlert className="size-4" />}
           title="Held for manual review"
-          description="CrossRiver flagged a beneficiary name mismatch and paused the payout."
+          description="Cross River flagged a beneficiary name mismatch and paused the payout."
           className="border-accent"
         >
           <div className="flex flex-col gap-4">
@@ -654,8 +654,8 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
                   Pending compliance review
                 </span>
                 <p className="text-sm text-muted-foreground">
-                  The beneficiary name did not match CrossRiver&apos;s records for this destination. No
-                  funds were debited. CrossRiver would typically request additional verification before
+                  The beneficiary name did not match Cross River&apos;s records for this destination. No
+                  funds were debited. Cross River would typically request additional verification before
                   releasing the payout.
                 </p>
               </div>
@@ -677,8 +677,8 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
       {phase === "blocked" ? (
         <StepCard
           step={<CircleAlert className="size-4" />}
-          title="Payout blocked by CrossRiver"
-          description="CrossRiver declined this payout during compliance screening."
+          title="Payout blocked by Cross River"
+          description="Cross River declined this payout during compliance screening."
           className="border-destructive/30"
         >
           <div className="flex flex-col gap-4">
@@ -689,8 +689,8 @@ export function PayoutFlow({ onConnectRequest }: { onConnectRequest: () => void 
                   Compliance decision: declined
                 </span>
                 <p className="text-sm text-muted-foreground">
-                  CrossRiver&apos;s compliance policy declined this payout. No funds were debited. In
-                  production, CrossRiver would surface a specific reason code and remediation path.
+                  Cross River&apos;s compliance policy declined this payout. No funds were debited. In
+                  production, Cross River would surface a specific reason code and remediation path.
                 </p>
               </div>
             </div>

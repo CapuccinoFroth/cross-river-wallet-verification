@@ -10,7 +10,7 @@ export function SiteHeader() {
           <Wordmark />
           <div className="hidden h-8 w-px bg-border sm:block" />
           <div className="hidden flex-col sm:flex">
-            <span className="text-sm font-semibold text-foreground">CrossRiverUSD</span>
+            <span className="text-sm font-semibold text-foreground">Cross River</span>
             <span className="text-xs text-muted-foreground">
               WalletConnect compliance-enabled money movement
             </span>

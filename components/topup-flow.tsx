@@ -68,7 +68,7 @@ function phaseToStep(phase: Phase): number {
     case "processing":
     case "blocked":
       return 2
-    // Settlement only completes after CrossRiver approves, so success marks every
+    // Settlement only completes after Cross River approves, so success marks every
     // step — including "Settle" — as done.
     case "success":
       return 4
@@ -184,8 +184,8 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
       ? [{ label: "Travel Rule originator data exchange", owner: "crossriver" as const }]
       : []),
     { label: controls.screeningDelay ? "Enhanced source-of-funds review" : "Source-of-funds risk scoring", owner: "crossriver" },
-    { label: "CrossRiver compliance policy decision", owner: "crossriver" },
-    { label: "CrossRiverUSD credited to your balance", owner: "crossriver" },
+    { label: "Cross River compliance policy decision", owner: "crossriver" },
+    { label: "Cross River credited to your balance", owner: "crossriver" },
   ]
 
   const willReject = controls.crossriverDecision === "reject"
@@ -220,7 +220,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
   const handleStopped = () => {
     const ref = shortId("TOP")
     setBlockReason(
-      "CrossRiver's compliance policy declined this funding request. In production, CrossRiver would surface a specific reason code and any remediation steps.",
+      "Cross River's compliance policy declined this funding request. In production, Cross River would surface a specific reason code and any remediation steps.",
     )
     logOnly({
       id: ref,
@@ -275,7 +275,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
           ) : controls.payinVerification ? (
             <WalletVerifyCard
               verification={verification}
-              prompt="Sign the request in your wallet to prove you own this address. CrossRiver requires a fresh signature before crediting any funds."
+              prompt="Sign the request in your wallet to prove you own this address. Cross River requires a fresh signature before crediting any funds."
               onCopy={copyAddress}
               copied={copied}
               attestation={{
@@ -326,7 +326,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
         <StepCard
           step={2}
           title="Choose funding source & amount"
-          description="Fund your CrossRiverUSD balance from any supported wallet asset. Rates and fees shown are illustrative."
+          description="Fund your Cross River balance from any supported wallet asset. Rates and fees shown are illustrative."
         >
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
@@ -401,7 +401,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
               <InfoRow label="You pay" value={formatToken(tokenAmount, asset.symbol)} mono />
               <InfoRow label="Network cost & spread" value={formatUsd(cost)} mono />
               <div className="my-2 h-px bg-border" />
-              <InfoRow label="CrossRiverUSD credited" value={formatUsd(creditEstimate)} mono strong />
+              <InfoRow label="Cross River credited" value={formatUsd(creditEstimate)} mono strong />
             </div>
 
             {insufficient ? (
@@ -432,7 +432,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
         <StepCard
           step={3}
           title="Review & acknowledge"
-          description="Confirm the details before CrossRiver screens and settles this top-up."
+          description="Confirm the details before Cross River screens and settles this top-up."
         >
           <div className="flex flex-col gap-4">
             <div className="rounded-xl border border-border bg-card p-4">
@@ -442,14 +442,14 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
               <InfoRow label="You pay" value={formatToken(tokenAmount, asset.symbol)} mono />
               <InfoRow label="Estimated cost" value={formatUsd(cost)} mono />
               <div className="my-2 h-px bg-border" />
-              <InfoRow label="CrossRiverUSD credited" value={formatUsd(creditEstimate)} mono strong />
+              <InfoRow label="Cross River credited" value={formatUsd(creditEstimate)} mono strong />
             </div>
 
             {controls.travelRulePayin ? (
               <TravelRuleFields
                 value={travelRule}
                 onChange={setTravelRule}
-                description="This funding request exceeds the Travel Rule threshold. CrossRiver requires the originator's identity details before crediting funds."
+                description="This funding request exceeds the Travel Rule threshold. Cross River requires the originator's identity details before crediting funds."
               />
             ) : null}
 
@@ -478,7 +478,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
             />
 
             <ResponsibilityNote>
-              CrossRiver is solely responsible for compliance screening, sanctions checks, and the final
+              Cross River is solely responsible for compliance screening, sanctions checks, and the final
               decision to credit funds. WalletConnect only relays your verified ownership proof and
               never custodies assets or makes compliance determinations.
             </ResponsibilityNote>
@@ -490,7 +490,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
                 className="mt-0.5"
               />
               <span className="text-sm leading-relaxed text-foreground">
-                I understand this is a demo, no real funds move, and CrossRiver controls the compliance
+                I understand this is a demo, no real funds move, and Cross River controls the compliance
                 outcome.
               </span>
             </label>
@@ -504,7 +504,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
                 disabled={!acknowledged || (controls.travelRulePayin && !isTravelRuleComplete(travelRule))}
                 className="h-10"
               >
-                Submit to CrossRiver <ArrowRight className="size-4" />
+                Submit to Cross River <ArrowRight className="size-4" />
               </Button>
             </div>
           </div>
@@ -515,8 +515,8 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
       {phase === "processing" ? (
         <StepCard
           step={4}
-          title="CrossRiver compliance screening"
-          description="WalletConnect relays your verified proof; CrossRiver runs screening and makes the credit decision."
+          title="Cross River compliance screening"
+          description="WalletConnect relays your verified proof; Cross River runs screening and makes the credit decision."
         >
           <div className="mb-3 flex justify-end">
             <Button
@@ -544,7 +544,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
               paused={paused}
               stepDuration={controls.screeningDelay ? 1500 : 950}
               stopAtIndex={stopIndex}
-              stopLabel="Blocked by CrossRiver compliance policy"
+              stopLabel="Blocked by Cross River compliance policy"
               onComplete={handleComplete}
               onStopped={handleStopped}
             />
@@ -562,7 +562,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
         <StepCard
           step={<Check className="size-4" />}
           title="Top-up complete"
-          description="CrossRiver approved and credited your CrossRiverUSD balance."
+          description="Cross River approved and credited your Cross River balance."
         >
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
@@ -573,7 +573,7 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
                 <div className="text-2xl font-semibold text-foreground">
                   {formatUsd(receipt.credit)}
                 </div>
-                <div className="text-sm text-muted-foreground">credited to CrossRiverUSD</div>
+                <div className="text-sm text-muted-foreground">credited to Cross River</div>
               </div>
               <Badge className="ml-auto gap-1 bg-primary/10 text-primary">
                 <Check className="size-3" /> Settled
@@ -607,8 +607,8 @@ export function TopUpFlow({ onConnectRequest }: { onConnectRequest: () => void }
       {phase === "blocked" ? (
         <StepCard
           step={<CircleAlert className="size-4" />}
-          title="Top-up blocked by CrossRiver"
-          description="CrossRiver declined this funding request during compliance screening."
+          title="Top-up blocked by Cross River"
+          description="Cross River declined this funding request during compliance screening."
           className="border-destructive/30"
         >
           <div className="flex flex-col gap-4">

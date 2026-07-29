@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "CrossRiverUSD — WalletConnect Compliance on Flows",
+  title: "Cross River — WalletConnect Compliance on Flows",
   description:
-    "Concept demo: connect and verify an external wallet, fund a CrossRiverUSD balance, or withdraw to a verified beneficiary wallet with compliance built into the flow.",
+    "Concept demo: connect and verify an external wallet, fund a Cross River balance, or withdraw to a verified beneficiary wallet with compliance built into the flow.",
   generator: "v0.app",
 }
 

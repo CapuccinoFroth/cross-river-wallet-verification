@@ -3,7 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react"
 
 export interface DemoControlsState {
-  // "approve" | "reject" — the final CrossRiver policy decision
+  // "approve" | "reject" — the final Cross River policy decision
   crossriverDecision: "approve" | "reject"
   screeningDelay: boolean
   // Wallet ownership verification (SIWX) requirement, per flow.
@@ -25,7 +25,7 @@ const DEFAULT_STATE: DemoControlsState = {
   beneficiaryMismatch: false,
 }
 
-const STORAGE_KEY = "crossriverusd-demo-controls"
+const STORAGE_KEY = "crossriver-demo-controls"
 
 interface DemoControlsContextValue extends DemoControlsState {
   setControl: <K extends keyof DemoControlsState>(key: K, value: DemoControlsState[K]) => void

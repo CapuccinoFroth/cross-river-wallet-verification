@@ -16,7 +16,7 @@ export function WalletVerifyCard({
   copied,
   attestation,
   verifiedTitle = "Wallet ownership verified",
-  evidenceLabel = "Verification evidence relayed to CrossRiver.",
+  evidenceLabel = "Verification evidence relayed to Cross River.",
 }: {
   verification: WalletVerification
   prompt: string

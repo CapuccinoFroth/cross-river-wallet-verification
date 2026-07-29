@@ -1,4 +1,4 @@
-// Shared demo constants, types, and helpers for the CrossRiverUSD prototype.
+// Shared demo constants, types, and helpers for the Cross River prototype.
 // None of this moves real funds — all balances and estimates are illustrative.
 
 export const INITIAL_CROSSRIVERUSD_BALANCE = 4250.0
@@ -77,19 +77,19 @@ export interface FundingAsset {
   balance: number
   network: string
   chainId: number
-  // conversion rate to CrossRiverUSD (illustrative)
+  // conversion rate to Cross River (illustrative)
   rate: number
 }
 
 export const FUNDING_ASSETS: FundingAsset[] = [
-  { id: "crossriverusd-base", symbol: "CrossRiverUSD", balance: 1200, network: "Base", chainId: 8453, rate: 1 },
+  { id: "crossriver-base", symbol: "Cross River", balance: 1200, network: "Base", chainId: 8453, rate: 1 },
   { id: "usdc-base", symbol: "USDC", balance: 420, network: "Base", chainId: 8453, rate: 0.997 },
   { id: "eth-eth", symbol: "ETH", balance: 0.18, network: "Ethereum", chainId: 1, rate: 3350 },
   { id: "usdt-arb", symbol: "USDT", balance: 210, network: "Arbitrum", chainId: 42161, rate: 0.996 },
   { id: "eurc-base", symbol: "EURC", balance: 175, network: "Base", chainId: 8453, rate: 1.078 },
 ]
 
-// Estimated CrossRiverUSD credit for a given USD amount funded from an asset.
+// Estimated Cross River credit for a given USD amount funded from an asset.
 export function estimateCredit(usdAmount: number): { credit: number; cost: number } {
   const cost = Math.max(0.75, usdAmount * 0.003)
   return { credit: Math.max(0, usdAmount - cost), cost }
@@ -132,7 +132,7 @@ export interface PayoutToken {
 }
 
 export const PAYOUT_TOKENS: PayoutToken[] = [
-  { id: "crossriverusd", symbol: "CrossRiverUSD" },
+  { id: "crossriver", symbol: "Cross River" },
   { id: "usdc", symbol: "USDC" },
   { id: "usdt", symbol: "USDT" },
 ]

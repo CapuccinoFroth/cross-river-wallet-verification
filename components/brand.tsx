@@ -1,20 +1,19 @@
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
-// Text-based wordmark placeholder. This is a concept demo and intentionally
-// does not reproduce the official CrossRiver logo.
+// Brand wordmark using the official Cross River infinity mark.
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <div className={cn("flex items-center gap-2", className)} aria-label="CrossRiverUSD">
-      <span
-        aria-hidden
-        className="flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground"
-      >
-        C
-      </span>
-      <span className="text-lg font-bold tracking-tight text-foreground">
-        CrossRiver
-        <span className="text-primary">USD</span>
-      </span>
+    <div className={cn("flex items-center gap-2.5", className)} aria-label="Cross River">
+      <Image
+        src="/crossriver-logo.png"
+        alt="Cross River"
+        width={44}
+        height={26}
+        priority
+        className="h-6 w-auto"
+      />
+      <span className="text-lg font-bold tracking-tight text-foreground">Cross River</span>
     </div>
   )
 }

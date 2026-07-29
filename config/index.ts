@@ -7,7 +7,7 @@ import type { AppKitNetwork } from "@reown/appkit/networks"
 // Get one at https://dashboard.reown.com
 export const projectId = process.env.NEXT_PUBLIC_REOWN_PROJECT_ID
 
-// The networks supported by the CrossRiverUSD demo.
+// The networks supported by the Cross River demo.
 export const networks = [base, mainnet, arbitrum, optimism, polygon] as [
   AppKitNetwork,
   ...AppKitNetwork[],

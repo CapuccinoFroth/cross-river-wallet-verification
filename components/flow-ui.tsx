@@ -83,7 +83,7 @@ export function DataRelayed({ rows }: { rows: { label: string; value: string }[]
   return (
     <Collapsible className="rounded-xl border border-border bg-muted/40">
       <CollapsibleTrigger className="group flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-foreground">
-        Data relayed to CrossRiver
+        Data relayed to Cross River
         <ChevronDown className="size-4 text-muted-foreground transition-transform group-data-[panel-open]:rotate-180" />
       </CollapsibleTrigger>
       <CollapsibleContent>

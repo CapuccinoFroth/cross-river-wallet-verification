@@ -109,7 +109,7 @@ export default function Page() {
 
         <footer className="border-t border-border pt-6 text-xs leading-relaxed text-muted-foreground">
           <p className="text-pretty">
-            CrossRiverUSD is a concept prototype for demonstration only. No real funds move, balances are
+            Cross River is a concept prototype for demonstration only. No real funds move, balances are
             illustrative, and compliance outcomes are simulated with the demo controls. Wallet
             connection and ownership verification use live WalletConnect / Reown AppKit with SIWX.
           </p>

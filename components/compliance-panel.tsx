@@ -15,13 +15,13 @@ const CONTENT = {
       "Delivers status webhooks",
     ],
     crossriver: [
-      "Matches the wallet to the CrossRiver customer",
+      "Matches the wallet to the Cross River customer",
       "Applies KYC and account permissions",
       "Screens the transaction",
       "Determines whether the deposit is allowed",
-      "Credits the CrossRiverUSD ledger",
+      "Credits the Cross River ledger",
     ],
-    bottom: "No funds are credited until CrossRiver returns an approved decision.",
+    bottom: "No funds are credited until Cross River returns an approved decision.",
   },
   payout: {
     walletconnect: [
@@ -30,18 +30,18 @@ const CONTENT = {
       "Verifies wallet-ownership evidence",
       "Relays beneficiary and wallet information",
       "Coordinates Travel Rule data exchange",
-      "Returns verification status to CrossRiver",
+      "Returns verification status to Cross River",
     ],
     crossriver: [
-      "Identifies the CrossRiver customer",
+      "Identifies the Cross River customer",
       "Validates the beneficiary",
       "Screens the destination wallet",
       "Applies payout permissions",
       "Makes the final approve or reject decision",
-      "Instructs CrossRiver Treasury to move funds",
+      "Instructs Cross River Treasury to move funds",
     ],
     bottom:
-      "CrossRiver Treasury does not initiate the payout until the beneficiary wallet is verified and CrossRiver approves the withdrawal.",
+      "Cross River Treasury does not initiate the payout until the beneficiary wallet is verified and Cross River approves the withdrawal.",
   },
 } as const
 
@@ -80,7 +80,7 @@ export function CompliancePanel({
         />
         <ResponsibilityBlock
           icon={<ShieldCheck className="size-3.5" />}
-          title="CrossRiver"
+          title="Cross River"
           tone="crossriver"
           items={content.crossriver}
         />

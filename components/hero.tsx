@@ -47,19 +47,19 @@ export function Hero() {
     <section className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-balance text-foreground md:text-4xl">
-          Move between on-chain assets and CrossRiverUSD with compliance built into the flow.
+          Move between on-chain assets and Cross River with compliance built into the flow.
         </h1>
         <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          Connect and verify an external wallet, fund a CrossRiverUSD balance from supported digital
+          Connect and verify an external wallet, fund a Cross River balance from supported digital
           assets, or withdraw to a verified beneficiary wallet. WalletConnect orchestrates wallet
-          interactions and compliance data handoffs while CrossRiver remains the final decision-maker.
+          interactions and compliance data handoffs while Cross River remains the final decision-maker.
         </p>
       </div>
 
       {/* Cross-cutting architecture banner */}
       <div className="rounded-2xl border border-border bg-surface-blue/60 p-4 md:p-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-stretch">
-          <ArchNode icon={Smartphone} title="CrossRiver App" tone="app" />
+          <ArchNode icon={Smartphone} title="Cross River App" tone="app" />
           <Arrow />
           <div className="flex-1 rounded-xl bg-primary/5 p-3 ring-1 ring-primary/20">
             <div className="mb-3 flex items-center gap-2">
@@ -83,13 +83,13 @@ export function Hero() {
             </div>
           </div>
           <Arrow />
-          <ArchNode icon={ShieldCheck} title="CrossRiver Compliance" tone="crossriver" />
+          <ArchNode icon={ShieldCheck} title="Cross River Compliance" tone="crossriver" />
           <Arrow />
-          <ArchNode icon={Boxes} title="Blockchain / CrossRiverUSD Ledger" tone="chain" />
+          <ArchNode icon={Boxes} title="Blockchain / Cross River Ledger" tone="chain" />
         </div>
         <p className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
           <Info className="size-3.5 shrink-0" />
-          CrossRiver retains final permissioning, enforcement, and all compliance determinations.
+          Cross River retains final permissioning, enforcement, and all compliance determinations.
         </p>
       </div>
     </section>

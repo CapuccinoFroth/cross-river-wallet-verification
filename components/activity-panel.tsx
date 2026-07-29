@@ -30,7 +30,7 @@ export function ActivityPanel() {
         <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
           <Wallet className="size-4" />
         </span>
-        <h3 className="text-sm font-semibold text-foreground">CrossRiverUSD account</h3>
+        <h3 className="text-sm font-semibold text-foreground">Cross River account</h3>
       </div>
 
       <div className="rounded-xl border border-border bg-gradient-to-br from-brand-navy to-brand-blue p-5 text-background">

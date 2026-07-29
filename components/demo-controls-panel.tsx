@@ -27,7 +27,7 @@ export function DemoControlsPanel({ onClose }: { onClose?: () => void }) {
     {
       id: "screeningDelay",
       label: "Enhanced review delay",
-      hint: "Simulate slower CrossRiver screening",
+      hint: "Simulate slower Cross River screening",
       value: controls.screeningDelay,
       onChange: (v) => controls.setControl("screeningDelay", v),
     },
@@ -99,7 +99,7 @@ export function DemoControlsPanel({ onClose }: { onClose?: () => void }) {
           </span>
           <div>
             <h3 className="text-sm font-semibold text-foreground">Demo controls</h3>
-            <p className="text-xs text-muted-foreground">Simulate CrossRiver&apos;s compliance outcomes</p>
+            <p className="text-xs text-muted-foreground">Simulate Cross River&apos;s compliance outcomes</p>
           </div>
         </div>
         <div className="flex items-center gap-1.5">
@@ -120,10 +120,10 @@ export function DemoControlsPanel({ onClose }: { onClose?: () => void }) {
         </div>
       </div>
 
-      {/* CrossRiver decision segmented control */}
+      {/* Cross River decision segmented control */}
       <div className="flex flex-col gap-1.5">
         <Label className="text-xs tracking-wide text-muted-foreground uppercase">
-          CrossRiver policy decision
+          Cross River policy decision
         </Label>
         <div className="grid grid-cols-2 gap-1 rounded-lg border border-border bg-muted/50 p-1">
           <button

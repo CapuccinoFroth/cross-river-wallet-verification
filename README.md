@@ -1,17 +1,17 @@
-# CrossRiverUSD
+# Cross River
 
-A concept prototype for **compliance-enabled money movement** between on-chain assets and a CrossRiverUSD balance. It demonstrates how WalletConnect / Reown AppKit orchestrates wallet interactions and compliance data handoffs while CrossRiver remains the final decision-maker.
+A concept prototype for **compliance-enabled money movement** between on-chain assets and a Cross River balance. It demonstrates how WalletConnect / Reown AppKit orchestrates wallet interactions and compliance data handoffs while Cross River remains the final decision-maker.
 
 > This is a demonstration only. No real funds move, balances are illustrative, and compliance outcomes are simulated with the built-in demo controls. **Wallet connection and ownership verification use live WalletConnect / Reown AppKit with SIWX.**
 
 ## Features
 
 - **Two money-movement flows** in a tabbed interface:
-  - **Universal Top-Up** — fund a CrossRiverUSD balance from a supported digital asset.
-  - **Payout to External Wallet** — withdraw CrossRiverUSD to a verified beneficiary wallet.
+  - **Universal Top-Up** — fund a Cross River balance from a supported digital asset.
+  - **Payout to External Wallet** — withdraw Cross River to a verified beneficiary wallet.
 - **Verification-first design** — every flow begins with live WalletConnect wallet-ownership verification (SIWX message signing) before any value moves.
-- **Compliance on Flow panel** — makes the behind-the-scenes split of responsibilities between WalletConnect (connectivity, data relay, Travel Rule) and CrossRiver (KYC, screening, permissioning, final decision) explicit.
-- **Demo controls** — simulate CrossRiver's compliance outcomes: approve/decline, enhanced review delay, Travel Rule requirements, and beneficiary mismatch holds.
+- **Compliance on Flow panel** — makes the behind-the-scenes split of responsibilities between WalletConnect (connectivity, data relay, Travel Rule) and Cross River (KYC, screening, permissioning, final decision) explicit.
+- **Demo controls** — simulate Cross River's compliance outcomes: approve/decline, enhanced review delay, Travel Rule requirements, and beneficiary mismatch holds.
 - **Shared account state** — an illustrative balance and activity history that both flows read from and update.
 
 ## Setup
@@ -35,4 +35,4 @@ Wallet connectivity requires a Reown (WalletConnect) project ID. The rest of the
 
 ## Disclaimer
 
-CrossRiverUSD is not a real product. This project exists to illustrate a compliance-aware money-movement UX pattern and the division of responsibilities between a wallet-connectivity layer and a regulated financial institution.
+Cross River is not a real product. This project exists to illustrate a compliance-aware money-movement UX pattern and the division of responsibilities between a wallet-connectivity layer and a regulated financial institution.

@@ -14,11 +14,11 @@ const queryClient = new QueryClient()
 
 export const isReownConfigured = Boolean(projectId)
 
-const appUrl = "https://crossriverusd-demo.vercel.app"
+const appUrl = "https://crossriver-demo.vercel.app"
 
 const metadata = {
-  name: "CrossRiverUSD Demo",
-  description: "CrossRiverUSD wallet verification and payment demo",
+  name: "Cross River Demo",
+  description: "Cross River wallet verification and payment demo",
   url: appUrl,
   icons: [`${appUrl}/appkit-icon.png`],
 }
@@ -41,7 +41,7 @@ createAppKit({
   },
   themeMode: "light",
   themeVariables: {
-    "--w3m-accent": "#2563d9",
+    "--w3m-accent": "#1176d1",
     "--w3m-border-radius-master": "3px",
   },
 })

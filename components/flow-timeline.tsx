@@ -20,12 +20,12 @@ const ownerStyles: Record<Owner, { dot: string; ring: string; label: string }> =
   crossriver: {
     dot: "bg-brand-navy text-background",
     ring: "ring-brand-navy/25",
-    label: "CrossRiver",
+    label: "Cross River",
   },
   "crossriver-wc": {
     dot: "bg-brand-navy text-background",
     ring: "ring-primary/30",
-    label: "CrossRiver & WalletConnect",
+    label: "Cross River & WalletConnect",
   },
   ledger: {
     dot: "bg-muted-foreground text-background",
